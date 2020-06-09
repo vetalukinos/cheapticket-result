@@ -1,0 +1,2560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cheap Ticket Result</title>
+    <link href="css/bootstrap-select.min.css" type="text/css" rel="stylesheet"/>
+    <link href="css/bootstrap-datetimepicker.min.css" type="text/css" rel="stylesheet"/>
+    <link href="css/intlTelInput.css" type="text/css" rel="stylesheet"/>
+    <link href="css/slick.css" type="text/css" rel="stylesheet"/>
+    <link href="scss/result-page.css" type="text/css" rel="stylesheet"/>
+    <link href="scss/main.css" type="text/css" rel="stylesheet"/>
+    <link href="scss/adaptive-result-page.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+
+<div class="page-wrapper" style="background: #F9F9F9">
+
+    <!--Adaptive Menu-->
+    <div class="container adaptive-menu-wrapper">
+        <div class="row">
+            <div class="col adaptive-menu">
+                <div class="menu-title"><img src="images/menu_title.png">Menu</div>
+                <ul class="menu-list">
+                    <li><a href="#"><img src="images/menu_search.png">Search flights</a></li>
+                    <li><a href="#"><img src="images/menu_booking.png">My booking</a></li>
+                    <li><a href="#"><img src="images/menu_title.png">Travelers</a></li>
+                    <li><a href="#"><img src="images/menu_search.png">Recent search</a></li>
+                    <li><a href="#"><img src="images/menu_booking.png">FAQ</a></li>
+                    <li class="contacts">
+                        <a href="#"><img src="images/menu_title.png">Contacts</a>
+                        <span><a href="tel:+91120488777">+91-120-4887777</a>(24/7)</span>
+                    </li>
+                </ul>
+                <div class="user-block">
+                    <span><img src="images/menu_user.png">Jordan Hunt</span>
+                    <a href="#">Accout settings</a>
+                    <a href="#">Logout</a>
+                </div>
+                <div class="select-your-language" data-toggle="modal" data-target="#select-your-language">Select your language</div>
+                <div class="view-block">View full version</div>
+            </div>
+        </div>
+    </div>
+    <!--Modal Window with Language and Currency-->
+    <div class="modal fade" id="select-your-language" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-title" id="exampleModalLabel">Select your language and currency</div>
+                <form>
+                    <div class="form-group">
+                        <select class="form-control">
+                            <option value="en">English</option>
+                            <option value="in">India</option>
+                            <option value="om">Oman</option>
+                            <option value="qa">Qatar</option>
+                            <option value="bh">Bahrain</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control">
+                            <option value="usd">USD - $</option>
+                            <option value="inr">INR - ₹</option>
+                            <option value="jpy">JPY - ¥</option>
+                            <option value="aud">AUD - $</option>
+                        </select>
+                    </div>
+                </form>
+                <button type="button" class="btn btn-primary modal-select"></button>
+            </div>
+        </div>
+    </div>
+
+    <!--Header-->
+    <div class="container header clearfix">
+        <div class="row justify-content-end">
+            <div class="col-xxl-9 col-xl-9 col-lg-12">
+                <div class="row">
+                    <div class="col-xxl-3 col-xl-3 col-lg-12 header-left">
+                        <div class="row header-left-for-adaptive">
+                            <div class="col-xxl col-xl col-lg">
+                                <div class="header-left-for-adaptive-left-block">
+                                    <a href="#" class="header-logo"><img src="images/logo.png"/></a>
+                                    <a href="#" class="header-arrow-icon"><img src="images/header_arrow_icon.png"/></a>
+                                </div>
+                                <div class="header-left-for-adaptive-right-block">
+                                    <a href="#" class="settings-adaptive-icon"><img src="images/settings_adaptive_icon.png"/></a>
+                                    <a href="#" class="menu-adaptive-icon"><img src="images/menu_adaptive_icon.png"/></a>
+                                </div>
+                            </div></div>
+
+                        <div class="header-phone">
+                            <a href="tel:+91120488777"><span class="phone-icon"></span>+91-120-4887777</a>
+                            <span>- 24/7</span>
+                        </div>
+                    </div>
+                    <div class="col-xxl-9 col-xl-9 align-self-end header-right">
+                        <a href="#" class="menu-adaptive-icon"><img src="images/menu_adaptive_icon.png"/></a>
+                        <div class="header-right-country">
+                            <select id="choice-country">
+                                <option value="en">English</option>
+                                <option value="in">India</option>
+                                <option value="om">Oman</option>
+                                <option value="qa">Qatar</option>
+                                <option value="bh">Bahrain</option>
+                            </select>
+                            <a href="#" class="header-right-country-default"><img src="images/flags/english.png"><span>English(US)</span></a>
+                            <ul class="header-right-country-toggle">
+                                <li class="active"><a href="#" data-country="en"><img src="images/flags/english.png"><span>English(US)</span></a></li>
+                                <li><a href="#" data-country="in"><img src="images/flags/india.png"><span>India</span></a></li>
+                                <li><a href="#" data-country="om"><img src="images/flags/oman.png"><span>Oman</span></a></li>
+                                <li><a href="#" data-country="qa"><img src="images/flags/qatar.png"><span>Qatar</span></a></li>
+                                <li><a href="#" data-country="bh"><img src="images/flags/bahrain.png"><span>Bahrain</span></a></li>
+                            </ul>
+                        </div>
+                        <div class="header-right-currency">
+                            <select id="choice-currency">
+                                <option value="usd">USD - $</option>
+                                <option value="inr">INR - ₹</option>
+                                <option value="jpy">JPY - ¥</option>
+                                <option value="aud">AUD - $</option>
+                            </select>
+                            <a href="#" class="header-right-currency-default">USD - $</a>
+                            <ul class="header-right-currency-toggle">
+                                <li class="active"><a href="#">USD - $</a></li>
+                                <li><a href="#">INR - ₹</a></li>
+                                <li><a href="#">JPY - ¥</a></li>
+                                <li><a href="#">AUD - $</a></li>
+                            </ul>
+                        </div>
+                        <div class="header-right-manage">
+                            <a href="#">Recent search</a>
+                        </div>
+                        <div class="header-right-sign-up"><a href="#"><span></span>Sign up</a></div>
+                        <div class="header-right-login"><a href="#"><span></span>Login</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Main Content-->
+    <div class="container result-page-content clearfix">
+       <div class="row">
+           <!--Left Side-->
+           <div class="col-xxl-3 col-xl-3 left-side">
+               <div class="row">
+                   <div class="col">
+                       <a href="#" class="header-logo"><img src="images/logo.png"/><span>CheapTicket.in</span></a>
+                   </div>
+               </div>
+               <div class="row">
+                   <div class="col-xxl col-xl col-lg-12 filter-wrapper">
+                       <div class="filter">
+                           <div class="filter-title">Filter</div>
+                           <a href="#" class="filter-button">Price<span></span></a>
+                           <div class="filter-block">
+                               <div id="slider-price" class="filter-slider"></div>
+                               <div class="input-group">
+                                   <input type="number" class="form-control-range slider price" value="6028" id="price-min" name="price-min">
+                                   <input type="number" class="form-control-range slider price" value="18000" id="price-max" name="price-max">
+                               </div>
+                           </div>
+                           <a href="#" class="filter-button">Stop<span></span></a>
+                           <div class="filter-block stop">
+                               <div class="row">
+                                   <div class="form-check">
+                                       <input class="form-check-input" type="checkbox" value="" id="filter-block-stop-1" checked>
+                                       <label class="form-check-label" for="filter-block-stop-1">Non-stop</label>
+                                   </div>
+                                   <div class="form-check">
+                                       <input class="form-check-input" type="checkbox" value="" id="filter-block-stop-2" checked>
+                                       <label class="form-check-label" for="filter-block-stop-2">1</label>
+                                   </div>
+                                   <div class="form-check">
+                                       <input class="form-check-input" type="checkbox" value="" id="filter-block-stop-3">
+                                       <label class="form-check-label" for="filter-block-stop-3">2</label>
+                                   </div>
+                               </div>
+                           </div>
+                           <a href="#" class="filter-button">Airlines<span></span></a>
+                           <div class="filter-block airlines">
+                               <div class="form-check">
+                                   <input class="form-check-input" type="checkbox" value="" id="go-air" checked>
+                                   <label class="form-check-label" for="go-air">Go Air</label>
+                               </div>
+                               <div class="form-check">
+                                   <input class="form-check-input" type="checkbox" value="" id="air-india" checked>
+                                   <label class="form-check-label" for="air-india">Air India</label>
+                               </div>
+                               <div class="form-check">
+                                   <input class="form-check-input" type="checkbox" value="" id="emirates">
+                                   <label class="form-check-label" for="emirates">Emirates</label>
+                               </div>
+                               <div class="form-check">
+                                   <input class="form-check-input" type="checkbox" value="" id="kml">
+                                   <label class="form-check-label" for="kml">KML</label>
+                               </div>
+                               <div class="form-check">
+                                   <input class="form-check-input" type="checkbox" value="" id="s7" checked>
+                                   <label class="form-check-label" for="s7">S7</label>
+                               </div>
+                               <div class="form-check">
+                                   <input class="form-check-input" type="checkbox" value="" id="jet-airlines">
+                                   <label class="form-check-label" for="jet-airlines">Jet airlines</label>
+                               </div>
+                           </div>
+                           <a href="#" class="filter-button">Departure time<span></span></a>
+                           <div class="filter-block departure-time">
+                               <div id="slider-departure-time" class="filter-slider"></div>
+                               <div class="input-group">
+                                   <input type="text" class="form-control-range slider price" value="00:00" id="departure-time-min" name="departure-time-min">
+                                   <input type="text" class="form-control-range slider price" value="24:00" id="departure-time-max" name="departure-time-max">
+                               </div>
+                           </div>
+                           <a href="#" class="filter-button">Arrive time<span></span></a>
+                           <div class="filter-block arrive-time">
+                               <div id="slider-arrive-time" class="filter-slider"></div>
+                               <div class="input-group">
+                                   <input type="text" class="form-control-range slider price" value="00:00" id="arrive-time-min" name="arrive-time-min">
+                                   <input type="text" class="form-control-range slider price" value="24:00" id="arrive-time-max" name="arrive-time-max">
+                               </div>
+                           </div>
+                           <a href="#" class="filter-button">Layover time (hours)<span></span></a>
+                           <div class="filter-block">
+                               <div id="slider-layover-time" class="filter-slider"></div>
+                               <div class="input-group">
+                                   <input type="number" class="form-control-range slider price" value="0" id="layover-time-min" name="layover-time-min">
+                                   <input type="number" class="form-control-range slider price" value="2" id="layover-time-max" name="layover-time-max">
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+           <!--Right Side-->
+           <div class="col-xxl-9 col-xl-9 col-lg-12 right-side">
+               <!--Toggle Top Row-->
+               <div class="row top-row-wrapper">
+                   <div class="col-xxl-2 col-xl-2 col-lg-1 col-md-2"><a class="black-plane" href="#"><img src="images/black-plane.png"></a></div>
+                   <div class="col-xxl-10 col-xl-10 col-lg-11 col-md-10">
+                       <!--Top Row-->
+                       <div class="row top-row">
+                           <div class="col-xxl-6 col-xl-8 col-lg-10 result-item-airport">
+                               <div class="result-first-airport"><span>New Delhi</span> <span class="country">(DEL)</span><p>Th, 3 NOV ‘17, 1 Adult, Economy</p></div>
+                               <div class="depart-line-airport"></div>
+                               <div class="result-second-airport"><span>Mumbai</span> <span class="country">(BOM)</span><p></p></div>
+                           </div>
+                           <div class="col-xxl-3 col-xl-2 col-lg-2 col-md-6 top-row-info">Flights found: 82</div>
+                           <div class="col-xxl-3 col-xl-2 col-lg-12 col-md-6 top-row-link"><a class="modify-search" href="#">modify search</a></div>
+                       </div>
+                       <!--Modify Row-->
+                       <div class="row modify-row">
+                           <!--Form Tab Radio Buttons-->
+                           <div class="col">
+                               <div class="row">
+                                   <div class="col-xxl-10 col-xl-10 col-lg-10">
+                                       <form class="form-search">
+                                           <fieldset class="form-group button-options">
+                                               <div class="form-check">
+                                                   <input type="radio" class="form-check-input tab-option" name="optionsRadios" id="radio-multi-1" value="option1" data-tab="form-tab-1" checked>
+                                                   <label for="radio-multi-1" class="form-check-label"><span>One way</span></label>
+                                               </div>
+                                               <div class="form-check">
+                                                   <input type="radio" class="form-check-input tab-option" name="optionsRadios" id="radio-multi-2" value="option2" data-tab="form-tab-2">
+                                                   <label for="radio-multi-2" class="form-check-label"><span>Round trip</span></label>
+                                               </div>
+                                               <div class="form-check">
+                                                   <input type="radio" class="form-check-input tab-option" name="optionsRadios" id="radio-multi-3" value="option3" data-tab="form-tab-3">
+                                                   <label for="radio-multi-3" class="form-check-label"><span>Multi city</span></label>
+                                               </div>
+                                           </fieldset>
+                                       </form>
+                                   </div>
+                                   <div class="col-xxl-2 col-xl-2 col-lg-2 close-modify-search-wrapper">
+                                       <a href="#" class="close-modify-search-button">Close</a>
+                                   </div>
+                               </div>
+                           </div>
+                           <!--Form Tab 1-->
+                           <div id="form-tab-1" class="form-wrapper-for-tab active">
+                               <form class="col form-search">
+                                   <div class="form-row block-1">
+                                       <div class="col-xxl-5 col-xl col-lg col-md-12">
+                                           <label for="from-select-one-way">From</label>
+                                           <select class="form-control selectpicker" id="from-select-one-way" data-live-search="true">
+                                               <option>New Delhi (DEL)</option>
+                                               <option>New Delhi (DEL)</option>
+                                               <option>New Delhi (DEL)</option>
+                                               <option>New Delhi (DEL)</option>
+                                               <option>New Delhi (DEL)</option>
+                                           </select>
+                                       </div>
+                                       <div class="col-xxl-5 col-xl col-lg col-md-12">
+                                           <label for="to-select-one-way">To</label>
+                                           <select class="form-control selectpicker" id="to-select-one-way" data-live-search="true">
+                                               <option>Mumbai (BOM)</option>
+                                               <option>Mumbai (BOM)</option>
+                                               <option>Mumbai (BOM)</option>
+                                               <option>Mumbai (BOM)</option>
+                                               <option>Mumbai (BOM)</option>
+                                           </select>
+                                       </div>
+                                   </div>
+                                   <div class="form-row block-2">
+                                       <div class="col-xxl-5">
+                                           <div class="row">
+                                               <div class="col-xxl col-xl col-lg-6 depart-on-padding">
+                                                   <div class="form-group">
+                                                       <label for="depart-on-one-way">Depart on</label>
+                                                       <div class="input-group date" id="date-one-way-1">
+                                                           <input type="text" id="depart-on-one-way" class="form-control"/>
+                                                           <span class="input-group-addon"><img src="images/calendar.png"/></span>
+                                                       </div>
+                                                   </div>
+                                               </div>
+                                               <div class="col-xxl col-xl col-lg-6 d-lg-block d-md-none depart-on-padding-2">
+                                                   <div class="form-group">
+                                                       <label for="return-on-one-way" class="disabled">Return on</label>
+                                                       <div class="input-group date" id="date-one-way-2">
+                                                           <input type="text" id="return-on-one-way" class="form-control" disabled />
+                                                           <span class="input-group-addon"><img src="images/calendar.png"/></span>
+                                                       </div>
+                                                   </div>
+                                               </div>
+                                           </div>
+                                       </div>
+                                       <div class="col-xxl-5 col-xl-6 col-lg-6">
+                                           <label for="choose-options-one-way">Passengers/Class</label>
+                                           <button class="btn dropdown-toggle choose-options" id="choose-options-one-way" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                               <div class="choose-options-one-way">1 Passenger, Economy</div>
+                                           </button>
+                                           <div class="dropdown-menu options">
+                                               <div class="title-option">Travellers</div>
+                                               <div class="number">
+                                                   <span class="title-age">Adult (12+ yr)</span>
+                                                   <span class="minus">-</span>
+                                                   <input id="adult-one-way" type="text" value="1" size="5"/>
+                                                   <span class="plus">+</span>
+                                               </div>
+                                               <div class="number">
+                                                   <span class="title-age">Child (2-11 yr)</span>
+                                                   <span class="minus">-</span>
+                                                   <input id="child-one-way" type="text" value="0" size="5"/>
+                                                   <span class="plus">+</span>
+                                               </div>
+                                               <div class="number">
+                                                   <span class="title-age">Infant (0-2 yr)</span>
+                                                   <span class="minus">-</span>
+                                                   <input id="infant-one-way" type="text" value="0" size="5"/>
+                                                   <span class="plus">+</span>
+                                               </div>
+                                               <div class="title-option">Class</div>
+                                               <div class="form-check">
+                                                   <input class="form-check-input class-option" type="radio" name="exampleRadios" id="economy-option-one-way" value="Economy" checked>
+                                                   <label class="form-check-label" for="economy-option-one-way">Economy</label>
+                                               </div>
+                                               <div class="form-check">
+                                                   <input class="form-check-input class-option" type="radio" name="exampleRadios" id="business-option-one-way" value="Business">
+                                                   <label class="form-check-label" for="business-option-one-way">Business</label>
+                                               </div>
+                                               <div class="form-check">
+                                                   <input class="form-check-input class-option" type="radio" name="exampleRadios" id="premium-economy-option-one-way" value="Premium Economy">
+                                                   <label class="form-check-label" for="premium-economy-option-one-way">Premium Economy</label>
+                                               </div>
+                                           </div>
+                                       </div>
+                                       <div class="col-xxl-2 col-xl-6 col-lg-6">
+                                           <button type="submit" class="btn btn-primary search">New Search</button>
+                                       </div>
+                                   </div>
+                               </form>
+                           </div>
+                           <!--Form Tab 2-->
+                           <div id="form-tab-2" class="form-wrapper-for-tab">
+                               <form class="col form-search">
+                                   <div class="form-row block-1">
+                                       <div class="col-xxl-5 col-xl col-lg col-md-12">
+                                           <label for="from-select-round">From</label>
+                                           <select class="form-control selectpicker" id="from-select-round" data-live-search="true">
+                                               <option>New Delhi (DEL)</option>
+                                               <option>New Delhi (DEL)</option>
+                                               <option>New Delhi (DEL)</option>
+                                               <option>New Delhi (DEL)</option>
+                                               <option>New Delhi (DEL)</option>
+                                           </select>
+                                       </div>
+                                       <div class="col-xxl-5 col-xl col-lg col-md-12">
+                                           <label for="to-select-round">To</label>
+                                           <select class="form-control selectpicker" id="to-select-round" data-live-search="true">
+                                               <option>Mumbai (BOM)</option>
+                                               <option>Mumbai (BOM)</option>
+                                               <option>Mumbai (BOM)</option>
+                                               <option>Mumbai (BOM)</option>
+                                               <option>Mumbai (BOM)</option>
+                                           </select>
+                                       </div>
+                                   </div>
+                                   <div class="form-row block-2">
+                                       <div class="col-xxl-5">
+                                           <div class="row">
+                                               <div class="col-xxl col-xl col-lg-6 depart-on-padding">
+                                                   <div class="form-group">
+                                                       <label for="depart-on-round">Depart on</label>
+                                                       <div class="input-group date" id="date-round-1">
+                                                           <input type="text" id="depart-on-round" class="form-control"/>
+                                                           <span class="input-group-addon"><img src="images/calendar.png"/></span>
+                                                       </div>
+                                                   </div>
+                                               </div>
+                                               <div class="col-xxl col-xl col-lg-6 depart-on-padding-2">
+                                                   <div class="form-group">
+                                                       <label for="return-on-round">Return on</label>
+                                                       <div class="input-group date" id="date-round-2">
+                                                           <input type="text" id="return-on-round" class="form-control" />
+                                                           <span class="input-group-addon"><img src="images/calendar.png"/></span>
+                                                       </div>
+                                                   </div>
+                                               </div>
+                                           </div>
+                                       </div>
+                                       <div class="col-xxl-5 col-xl-6 col-lg-6">
+                                           <label for="choose-options-round">Passengers/Class</label>
+                                           <button class="btn dropdown-toggle choose-options" id="choose-options-round" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                               <div class="choose-options-round">1 Passenger, Economy</div>
+                                           </button>
+                                           <div class="dropdown-menu options">
+                                               <div class="title-option">Travellers</div>
+                                               <div class="number">
+                                                   <span class="title-age">Adult (12+ yr)</span>
+                                                   <span class="minus">-</span>
+                                                   <input id="adult-round" type="text" value="1" size="5"/>
+                                                   <span class="plus">+</span>
+                                               </div>
+                                               <div class="number">
+                                                   <span class="title-age">Child (2-11 yr)</span>
+                                                   <span class="minus">-</span>
+                                                   <input id="child-round" type="text" value="0" size="5"/>
+                                                   <span class="plus">+</span>
+                                               </div>
+                                               <div class="number">
+                                                   <span class="title-age">Infant (0-2 yr)</span>
+                                                   <span class="minus">-</span>
+                                                   <input id="infant-round" type="text" value="0" size="5"/>
+                                                   <span class="plus">+</span>
+                                               </div>
+                                               <div class="title-option">Class</div>
+                                               <div class="form-check">
+                                                   <input class="form-check-input class-option-round" type="radio" name="exampleRadios" id="economy-option-round" value="Economy">
+                                                   <label class="form-check-label" for="economy-option-round">Economy</label>
+                                               </div>
+                                               <div class="form-check">
+                                                   <input class="form-check-input class-option-round" type="radio" name="exampleRadios" id="business-option-round" value="Business" checked>
+                                                   <label class="form-check-label" for="business-option-round">Business</label>
+                                               </div>
+                                               <div class="form-check">
+                                                   <input class="form-check-input class-option-round" type="radio" name="exampleRadios" id="premium-economy-option-round" value="Premium Economy">
+                                                   <label class="form-check-label" for="premium-economy-option-round">Premium Economy</label>
+                                               </div>
+                                           </div>
+                                       </div>
+                                       <div class="col-xxl-2 col-xl-6 col-lg-6">
+                                           <button type="submit" class="btn btn-primary search">New Search</button>
+                                       </div>
+                                   </div>
+                               </form>
+                           </div>
+                           <!--Form Tab 3-->
+                           <div id="form-tab-3" class="form-wrapper-for-tab">
+                               <form class="col form-search multi">
+                                   <div class="form-row">
+                                       <div class="col-xxl-xxl col-xl col-lg d-lg-block d-md-none solid-line top"></div>
+                                   </div>
+                                   <div class="form-row block-1">
+                                       <div class="col-xxl-xxl-4 col-xl-4 col-lg-4 col-md-12">
+                                           <label for="from-select-multi">From</label>
+                                           <select class="form-control selectpicker" id="from-select-multi" data-live-search="true">
+                                               <option>New Delhi (DEL)</option>
+                                               <option>New Delhi (DEL)</option>
+                                               <option>New Delhi (DEL)</option>
+                                               <option>New Delhi (DEL)</option>
+                                               <option>New Delhi (DEL)</option>
+                                           </select>
+                                       </div>
+                                       <div class="col-xxl-xxl-4 col-xl-4 col-lg-4 col-md-12">
+                                           <label for="to-select-multi">To</label>
+                                           <select class="form-control selectpicker" id="to-select-multi" data-live-search="true">
+                                               <option>Mumbai (BOM)</option>
+                                               <option>Mumbai (BOM)</option>
+                                               <option>Mumbai (BOM)</option>
+                                               <option>Mumbai (BOM)</option>
+                                               <option>Mumbai (BOM)</option>
+                                           </select>
+                                       </div>
+                                       <div class="col-xxl-xxl-4 col-xl-4 col-lg-4 col-md-12">
+                                           <div class="form-group">
+                                               <label for="depart-multi">Depart on</label>
+                                               <div class="input-group date" id="date-multi-1">
+                                                   <input type="text" id="depart-multi" class="form-control"/>
+                                                   <span class="input-group-addon"><img src="images/calendar.png"/></span>
+                                               </div>
+                                           </div>
+                                       </div>
+                                   </div>
+                                   <div class="form-row block-2">
+                                       <div class="col-xxl-xxl-4 col-xl-4 col-lg-4">
+                                           <label for="from-select">From</label>
+                                           <select class="form-control selectpicker" id="from-select" data-live-search="true">
+                                               <option>New Delhi (DEL)</option>
+                                               <option>New Delhi (DEL)</option>
+                                               <option>New Delhi (DEL)</option>
+                                               <option>New Delhi (DEL)</option>
+                                               <option>New Delhi (DEL)</option>
+                                           </select>
+                                       </div>
+                                       <div class="col-xxl-xxl-4 col-xl-4 col-lg-4">
+                                           <label for="to-select-multi2">To</label>
+                                           <select class="form-control selectpicker" id="to-select-multi2" data-live-search="true">
+                                               <option>Mumbai (BOM)</option>
+                                               <option>Mumbai (BOM)</option>
+                                               <option>Mumbai (BOM)</option>
+                                               <option>Mumbai (BOM)</option>
+                                               <option>Mumbai (BOM)</option>
+                                           </select>
+                                       </div>
+                                       <div class="col-xxl-xxl-4 col-xl-4 col-lg-4">
+                                           <div class="form-group">
+                                               <label for="depart-on-multi2">Depart on</label>
+                                               <div class="input-group date" id="date-multi-2">
+                                                   <input type="text" id="depart-on-multi2" class="form-control"/>
+                                                   <span class="input-group-addon"><img src="images/calendar.png"/></span>
+                                               </div>
+                                           </div>
+                                       </div>
+                                   </div>
+                                   <div class="form-row">
+                                       <div class="col-xxl-xxl col-xl col-lg d-lg-block d-md-none solid-line top"></div>
+                                   </div>
+                                   <div class="form-row block-3">
+                                       <div class="col-xxl-xxl-6 col-xl-6 col-lg-6">
+                                           <label for="choose-options-multi">Passengers/Class</label>
+                                           <button class="btn dropdown-toggle choose-options" id="choose-options-multi" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                               <div class="choose-options-multi">1 Passenger, Economy</div>
+                                           </button>
+                                           <div class="dropdown-menu options">
+                                               <div class="title-option">Travellers</div>
+                                               <div class="number">
+                                                   <span class="title-age">Adult (12+ yr)</span>
+                                                   <span class="minus">-</span>
+                                                   <input id="adult-multi" type="text" value="1" size="5"/>
+                                                   <span class="plus">+</span>
+                                               </div>
+                                               <div class="number">
+                                                   <span class="title-age">Child (2-11 yr)</span>
+                                                   <span class="minus">-</span>
+                                                   <input id="child-multi" type="text" value="0" size="5"/>
+                                                   <span class="plus">+</span>
+                                               </div>
+                                               <div class="number">
+                                                   <span class="title-age">Infant (0-2 yr)</span>
+                                                   <span class="minus">-</span>
+                                                   <input id="infant-multi" type="text" value="0" size="5"/>
+                                                   <span class="plus">+</span>
+                                               </div>
+                                               <div class="title-option">Class</div>
+                                               <div class="form-check">
+                                                   <input class="form-check-input class-option-multi" type="radio" name="exampleRadios" id="economy-option-multi" value="Economy">
+                                                   <label class="form-check-label" for="economy-option-multi">Economy</label>
+                                               </div>
+                                               <div class="form-check">
+                                                   <input class="form-check-input class-option-multi" type="radio" name="exampleRadios" id="business-option-multi" value="Business">
+                                                   <label class="form-check-label" for="business-option-multi">Business</label>
+                                               </div>
+                                               <div class="form-check">
+                                                   <input class="form-check-input class-option-multi" type="radio" name="exampleRadios" id="premium-economy-option-multi" value="Premium Economy" checked>
+                                                   <label class="form-check-label" for="premium-economy-option-multi">Premium Economy</label>
+                                               </div>
+                                           </div>
+                                       </div>
+                                       <div class="col-xxl-xxl-6 align-self-end col-xl-6 col-lg-6">
+                                           <div class="row">
+                                               <div class="col-xxl-xxl-6 co-lxl-6 col-lg-12">
+                                                   <button type="submit" class="btn btn-primary search">New Search</button>
+                                               </div>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </form>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+               <!--Slider Row-->
+               <div class="row justify-content-end">
+                   <div class="col-xxl-10 col-xl-10 col-lg-11 col-md-12">
+                       <div id="result-slider" class="result-slider">
+                           <div class="slider-item"><p>Tue, 31 OCT</p><span>₹ 6,028</span></div>
+                           <div class="slider-item"><p>Wed, 1 NOV</p><span>₹ 5,728</span></div>
+                           <div class="slider-item"><p>Thu, 2 NOV</p><span>₹ 6,067</span></div>
+                           <div class="slider-item active"><p>Fri, 3 NOV</p><span>₹ 6,028</span></div>
+                           <div class="slider-item"><p>Sat, 4 NOV</p><span>₹ 7,320</span></div>
+                           <div class="slider-item"><p>, 5 NOV</p><span>₹ 7,212</span></div>
+                           <div class="slider-item"><p>Mon, 6 NOV</p><span>₹ 6,045</span></div>
+                           <div class="slider-item"><p>Tue, 7 NOV</p><span>₹ 6,028</span></div>
+                           <div class="slider-item"><p>Wed, 8 NOV</p><span>₹ 5,728</span></div>
+                           <div class="slider-item"><p>Thu, 9 NOV</p><span>₹ 6,067</span></div>
+                       </div>
+                   </div>
+               </div>
+               <!--Title Row-->
+               <div class="row justify-content-end title-row">
+                   <div class="col-xxl-10 col-xl-10">
+                       <a class="title-1" href="#">Depart</a>
+                       <a class="title-2" href="#">Arrive</a>
+                       <a class="title-3" href="#">Depart</a>
+                       <a class="title-4" href="#">Sort by:</a>
+                   </div>
+               </div>
+               <!--Block-1-->
+               <div class="row result-row">
+                   <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2"><div class="result-button">Best price<span class="result-button-bg"></span></div></div>
+                   <div class="col-xxl-10 col-xl-10 col-lg-10 col-md-8 result-item">
+                       <div class="row">
+                           <div class="col-xxl-5 col-xl-12 col-lg-12 col-md-12">
+                               <div class="row depart-and-arrive-titles">
+                                   <div class="col">
+                                       <div class="depart-title-1280">Depart</div>
+                                       <div class="arrive-title-1280">Arrive</div>
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl result-item-airport">
+                                       <div class="result-first-airport"><span>DEL</span><p>10:45, 3 NOV</p></div>
+                                       <div class="depart-line-airport-item"></div>
+                                       <div class="result-second-airport"><span>BOM</span><p>12:55, 3 NOV</p></div>
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl result-item-flight">
+                                       <span><img src="images/flight_icon1.png">Go Air , G8-448</span>
+                                       <span>
+                                   <img data-toggle="tooltip" data-trigger="click" title="Long layover" src="images/flight_icon3.png">
+                                   <img src="images/flight_icon4.png">
+                                   <img src="images/flight_icon5.png">
+                                   <img src="images/flight_icon6.png">
+                               </span>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="col-xxl-5 col-xl-7 col-lg-8">
+                               <div class="row depart-and-arrive-titles">
+                                   <div class="col">
+                                       <div class="depart-title-1280">Depart</div>
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg result-item-stop">
+                                       <span>2h 10m</span>
+                                       <span>Non-stop</span>
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg result-item-options">
+                                       <a class="baggage-information" href="#"><span>Baggage information</span></a>
+                                       <a class="fare-details" href="#"><span>Fare Details</span></a>
+                                       <a class="flight-details" href="#"><span>Flight Details</span></a>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="col-xxl-2 col-xl-5 col-lg-4 more-details-class">
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg col-md result-item-currency">₹ 6,028</div>
+                                   <div class="col-xxl col-xl col-lg col-md more-details-toggle"><a href="#">More details</a></div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl">
+                                       <a href="#" class="result-item-button btn btn-warning" role="button" aria-pressed="true">Book</a>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <!--Baggage Information-->
+                       <div class="row">
+                           <div class="col result-baggage-information">
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg col-md-12">
+                                       <div class="row">
+                                           <div class="col-xxl col-xl col-lg col-md-12 result-item-airport">
+                                               <img class="icon-before-result-information" src="images/flight_icon2.png">
+                                               <span>DEL</span>
+                                               <img class="line-airport" src="images/line_airport_small.png">
+                                               <span>BOM</span>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col-xxl col-xl col-lg col-md-12 result-information-name"><span>Air India</span></div>
+                                       </div>
+                                   </div>
+                                   <div class="col-xxl col-xl col-lg col-md-12">
+                                       <div class="row option-row-baggage">
+                                           <div class="col-xxl col-xl col-lg col-md-12 result-information-options">
+                                               <span>Check-in</span>
+                                               <span>0 KG/person</span>
+                                           </div>
+                                       </div>
+                                       <div class="row option-row-baggage">
+                                           <div class="col-xxl col-xl col-lg col-md-12 result-information-options">
+                                               <span>Cabin</span>
+                                               <span>0 KG/person</span>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <!--Fare Details-->
+                       <div class="row">
+                           <div class="col result-fare-details">
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg col-md-12">
+                                       <div class="row">
+                                           <div class="col-xxl col-xl-12 result-item-airport">
+                                               <img class="icon-before-result-information" src="images/flight_icon2.png">
+                                               <span>DEL</span>
+                                               <img class="line-airport" src="images/line_airport_small.png">
+                                               <span>BOM</span>
+                                               <div class="result-information-name"><span>Air India</span></div>
+                                           </div>
+                                           <div class="col-xxl col-xl-12"><span class="non-refundable">NON REFUNDABLE</span></div>
+                                       </div>
+                                   </div>
+                                   <div class="col-xxl col-xl col-lg col-md-12">
+                                       <div class="row">
+                                           <div class="col result-information-options">
+                                               <span>Base fare</span>
+                                               <span>₹ 5,586</span>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col result-information-options">
+                                               <span>Taxes & fees</span>
+                                               <span>₹ 481</span>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col result-information-options">
+                                               <span class="total">Total</span>
+                                               <span>₹ 6,067</span>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <!--Flight Details-->
+                       <div class="row">
+                           <div class="col result-flight-details">
+                               <div class="row">
+                                   <div class="col-xxl-7 col-xl-12 col-lg-12 col-md-12 result-item-airport">
+                                       <div class="result-first-airport"><span>DEL</span><p>10:45, 3 NOV</p></div>
+                                       <div class="depart-line-airport-item-flight"></div>
+                                       <div class="result-second-airport"><span>BOM</span><p>12:55, 3 NOV</p></div>
+                                   </div>
+                                   <div class="col-xxl-5 col-xl-12 col-lg-12 col-md-12 result-flight-details-airport">
+                                       <img src="images/flight_icon2.png">ir India, AI-865
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl-7 col-xl-12 col-lg-12 col-md-12 result-item-airport airport-settings">
+                                       <div class="result-first-airport"><p>Delhi Indira Gandhi Intl, New Delhi (DEL)</br> Terminal: 3</p></div>
+                                       <div class="result-second-airport"><p>Dubai Intl Arpt, Dubai (DXB)</br> Terminal: 1</p></div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="row">
+                           <div class="col result-flight-details layover-time">
+                               <img src="images/menu_booking.png">
+                               Layover time on Amritsar airport - 3h 15m
+                           </div>
+                       </div>
+                       <div class="row">
+                           <div class="col result-flight-details">
+                               <div class="row">
+                                   <div class="col-xxl-7 col-xl-12 col-lg-12 col-md-12 result-item-airport">
+                                       <div class="result-first-airport"><span>DEL</span><p>10:45, 3 NOV</p></div>
+                                       <div class="depart-line-airport-item-flight"></div>
+                                       <div class="result-second-airport"><span>BOM</span><p>12:55, 3 NOV</p></div>
+                                   </div>
+                                   <div class="col-xxl-5 col-xl-12 col-lg-12 col-md-12 result-flight-details-airport">
+                                       <img src="images/flight_icon2.png">ir India, AI-865
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl-7 col-xl-12 col-lg-12 col-md-12 result-item-airport airport-settings">
+                                       <div class="result-first-airport"><p>Delhi Indira Gandhi Intl, New Delhi (DEL)</br> Terminal: 3</p></div>
+                                       <div class="result-second-airport"><p>Dubai Intl Arpt, Dubai (DXB)</br> Terminal: 1</p></div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="col-xxl col-xl col-lg col-md-2 hidden-for-desktop"><img src="images/yellow-plane.png"></div>
+               </div>
+               <!--Block-2-->
+               <div class="row result-row">
+                   <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2"></div>
+                   <div class="col-xxl-10 col-xl-10 col-lg-10 col-md-8 result-item">
+                       <div class="row">
+                           <div class="col-xxl-5 col-xl-12 col-lg-12 col-md-12">
+                               <div class="row depart-and-arrive-titles">
+                                   <div class="col">
+                                       <div class="depart-title-1280">Depart</div>
+                                       <div class="arrive-title-1280">Arrive</div>
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl result-item-airport">
+                                       <div class="result-first-airport"><span>DEL</span><p>10:45, 3 NOV</p></div>
+                                       <div class="depart-line-airport-item"></div>
+                                       <div class="result-second-airport"><span>BOM</span><p>12:55, 3 NOV</p></div>
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl result-item-flight">
+                                       <span><img src="images/flight_icon2.png">Go Air , G8-448</span>
+                                       <span>
+                                   <img data-toggle="tooltip" data-trigger="click" title="Long layover" src="images/flight_icon3.png">
+                                   <img src="images/flight_icon4.png">
+                                   <img src="images/flight_icon5.png">
+                                   <img src="images/flight_icon6.png">
+                               </span>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="col-xxl-5 col-xl-7 col-lg-8">
+                               <div class="row depart-and-arrive-titles">
+                                   <div class="col">
+                                       <div class="depart-title-1280">Depart</div>
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg result-item-stop">
+                                       <span>2h 10m</span>
+                                       <span>Non-stop</span>
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg result-item-options">
+                                       <a class="baggage-information" href="#"><span>Baggage information</span></a>
+                                       <a class="fare-details" href="#"><span>Fare Details</span></a>
+                                       <a class="flight-details" href="#"><span>Flight Details</span></a>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="col-xxl-2 col-xl-5 col-lg-4 more-details-class">
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg col-md result-item-currency">₹ 6,028</div>
+                                   <div class="col-xxl col-xl col-lg col-md more-details-toggle"><a href="#">More details</a></div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl">
+                                       <a href="#" class="result-item-button btn btn-warning" role="button" aria-pressed="true">Book</a>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <!--Baggage Information-->
+                       <div class="row">
+                           <div class="col result-baggage-information">
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg col-md-12">
+                                       <div class="row">
+                                           <div class="col-xxl col-xl col-lg col-md-12 result-item-airport">
+                                               <img class="icon-before-result-information" src="images/flight_icon2.png">
+                                               <span>DEL</span>
+                                               <img class="line-airport" src="images/line_airport_small.png">
+                                               <span>BOM</span>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col-xxl col-xl col-lg col-md-12 result-information-name"><span>Air India</span></div>
+                                       </div>
+                                   </div>
+                                   <div class="col-xxl col-xl col-lg col-md-12">
+                                       <div class="row option-row-baggage">
+                                           <div class="col-xxl col-xl col-lg col-md-12 result-information-options">
+                                               <span>Check-in</span>
+                                               <span>0 KG/person</span>
+                                           </div>
+                                       </div>
+                                       <div class="row option-row-baggage">
+                                           <div class="col-xxl col-xl col-lg col-md-12 result-information-options">
+                                               <span>Cabin</span>
+                                               <span>0 KG/person</span>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <!--Fare Details-->
+                       <div class="row">
+                           <div class="col result-fare-details">
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg col-md-12">
+                                       <div class="row">
+                                           <div class="col-xxl col-xl-12 result-item-airport">
+                                               <img class="icon-before-result-information" src="images/flight_icon2.png">
+                                               <span>DEL</span>
+                                               <img class="line-airport" src="images/line_airport_small.png">
+                                               <span>BOM</span>
+                                               <div class="result-information-name"><span>Air India</span></div>
+                                           </div>
+                                           <div class="col-xxl col-xl-12"><span class="non-refundable">NON REFUNDABLE</span></div>
+                                       </div>
+                                   </div>
+                                   <div class="col-xxl col-xl col-lg col-md-12">
+                                       <div class="row">
+                                           <div class="col result-information-options">
+                                               <span>Base fare</span>
+                                               <span>₹ 5,586</span>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col result-information-options">
+                                               <span>Taxes & fees</span>
+                                               <span>₹ 481</span>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col result-information-options">
+                                               <span class="total">Total</span>
+                                               <span>₹ 6,067</span>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <!--Flight Details-->
+                       <div class="row">
+                           <div class="col result-flight-details">
+                               <div class="row">
+                                   <div class="col-xxl-7 col-xl-12 col-lg-12 col-md-12 result-item-airport">
+                                       <div class="result-first-airport"><span>DEL</span><p>10:45, 3 NOV</p></div>
+                                       <div class="depart-line-airport-item-flight"></div>
+                                       <div class="result-second-airport"><span>BOM</span><p>12:55, 3 NOV</p></div>
+                                   </div>
+                                   <div class="col-xxl-5 col-xl-12 col-lg-12 col-md-12 result-flight-details-airport">
+                                       <img src="images/flight_icon2.png">ir India, AI-865
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl-7 col-xl-12 col-lg-12 col-md-12 result-item-airport airport-settings">
+                                       <div class="result-first-airport"><p>Delhi Indira Gandhi Intl, New Delhi (DEL)</br> Terminal: 3</p></div>
+                                       <div class="result-second-airport"><p>Dubai Intl Arpt, Dubai (DXB)</br> Terminal: 1</p></div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="row">
+                           <div class="col result-flight-details layover-time">
+                               <img src="images/menu_booking.png">
+                               Layover time on Amritsar airport - 3h 15m
+                           </div>
+                       </div>
+                       <div class="row">
+                           <div class="col result-flight-details">
+                               <div class="row">
+                                   <div class="col-xxl-7 col-xl-12 col-lg-12 col-md-12 result-item-airport">
+                                       <div class="result-first-airport"><span>DEL</span><p>10:45, 3 NOV</p></div>
+                                       <div class="depart-line-airport-item-flight"></div>
+                                       <div class="result-second-airport"><span>BOM</span><p>12:55, 3 NOV</p></div>
+                                   </div>
+                                   <div class="col-xxl-5 col-xl-12 col-lg-12 col-md-12 result-flight-details-airport">
+                                       <img src="images/flight_icon2.png">ir India, AI-865
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl-7 col-xl-12 col-lg-12 col-md-12 result-item-airport airport-settings">
+                                       <div class="result-first-airport"><p>Delhi Indira Gandhi Intl, New Delhi (DEL)</br> Terminal: 3</p></div>
+                                       <div class="result-second-airport"><p>Dubai Intl Arpt, Dubai (DXB)</br> Terminal: 1</p></div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="col-xxl col-xl col-lg col-md-2 hidden-for-desktop"><img src="images/yellow-plane.png"></div>
+               </div>
+               <!--Block-3-->
+               <div class="row result-row">
+                   <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2"><div class="result-button">Fast<span class="result-button-bg"></span></div></div>
+                   <div class="col-xxl-10 col-xl-10 col-lg-10 col-md-8 result-item">
+                       <div class="row">
+                           <div class="col-xxl-5 col-xl-12 col-lg-12 col-md-12">
+                               <div class="row depart-and-arrive-titles">
+                                   <div class="col">
+                                       <div class="depart-title-1280">Depart</div>
+                                       <div class="arrive-title-1280">Arrive</div>
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl result-item-airport">
+                                       <div class="result-first-airport"><span>DEL</span><p>10:45, 3 NOV</p></div>
+                                       <div class="stop-point-image">
+                                           <div class="stop-point-image"><div class="depart-line-airport-item"></div></div>
+                                           <div class="stop-point" data-html="true" data-toggle="tooltip"
+                                                data-trigger="click" title="<span>Transfer on Amritsar</span><p>Depart: 11:15</p><p>Arrive: 16:30</p>">
+                                               <div class="stop-point-hours">3h 15m</div>
+                                           </div>
+                                       </div>
+                                       <div class="result-second-airport"><span>BOM</span><p>12:55, 3 NOV</p></div>
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl result-item-flight">
+                                       <span><img src="images/flight_icon2.png">Go Air , G8-448</span>
+                                       <span>
+                                   <img data-toggle="tooltip" data-trigger="click" title="Long layover" src="images/flight_icon3.png">
+                                   <img src="images/flight_icon4.png">
+                                   <img src="images/flight_icon5.png">
+                                   <img src="images/flight_icon6.png">
+                               </span>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="col-xxl-5 col-xl-7 col-lg-8">
+                               <div class="row depart-and-arrive-titles">
+                                   <div class="col">
+                                       <div class="depart-title-1280">Depart</div>
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg result-item-stop">
+                                       <span>2h 10m</span>
+                                       <span>Non-stop</span>
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg result-item-options">
+                                       <a class="baggage-information" href="#"><span>Baggage information</span></a>
+                                       <a class="fare-details" href="#"><span>Fare Details</span></a>
+                                       <a class="flight-details" href="#"><span>Flight Details</span></a>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="col-xxl-2 col-xl-5 col-lg-4 more-details-class">
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg col-md result-item-currency">₹ 6,028</div>
+                                   <div class="col-xxl col-xl col-lg col-md more-details-toggle"><a href="#">More details</a></div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl">
+                                       <a href="#" class="result-item-button btn btn-warning" role="button" aria-pressed="true">Book</a>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <!--Baggage Information-->
+                       <div class="row">
+                           <div class="col result-baggage-information">
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg col-md-12">
+                                       <div class="row">
+                                           <div class="col-xxl col-xl col-lg col-md-12 result-item-airport">
+                                               <img class="icon-before-result-information" src="images/flight_icon2.png">
+                                               <span>DEL</span>
+                                               <img class="line-airport" src="images/line_airport_small.png">
+                                               <span>BOM</span>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col-xxl col-xl col-lg col-md-12 result-information-name"><span>Air India</span></div>
+                                       </div>
+                                   </div>
+                                   <div class="col-xxl col-xl col-lg col-md-12">
+                                       <div class="row option-row-baggage">
+                                           <div class="col-xxl col-xl col-lg col-md-12 result-information-options">
+                                               <span>Check-in</span>
+                                               <span>0 KG/person</span>
+                                           </div>
+                                       </div>
+                                       <div class="row option-row-baggage">
+                                           <div class="col-xxl col-xl col-lg col-md-12 result-information-options">
+                                               <span>Cabin</span>
+                                               <span>0 KG/person</span>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <!--Fare Details-->
+                       <div class="row">
+                           <div class="col result-fare-details">
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg col-md-12">
+                                       <div class="row">
+                                           <div class="col-xxl col-xl-12 result-item-airport">
+                                               <img class="icon-before-result-information" src="images/flight_icon2.png">
+                                               <span>DEL</span>
+                                               <img class="line-airport" src="images/line_airport_small.png">
+                                               <span>BOM</span>
+                                               <div class="result-information-name"><span>Air India</span></div>
+                                           </div>
+                                           <div class="col-xxl col-xl-12"><span class="non-refundable">NON REFUNDABLE</span></div>
+                                       </div>
+                                   </div>
+                                   <div class="col-xxl col-xl col-lg col-md-12">
+                                       <div class="row">
+                                           <div class="col result-information-options">
+                                               <span>Base fare</span>
+                                               <span>₹ 5,586</span>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col result-information-options">
+                                               <span>Taxes & fees</span>
+                                               <span>₹ 481</span>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col result-information-options">
+                                               <span class="total">Total</span>
+                                               <span>₹ 6,067</span>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <!--Flight Details-->
+                       <div class="row">
+                           <div class="col result-flight-details">
+                               <div class="row">
+                                   <div class="col-xxl-7 col-xl-12 col-lg-12 col-md-12 result-item-airport">
+                                       <div class="result-first-airport"><span>DEL</span><p>10:45, 3 NOV</p></div>
+                                       <div class="depart-line-airport-item-flight"></div>
+                                       <div class="result-second-airport"><span>BOM</span><p>12:55, 3 NOV</p></div>
+                                   </div>
+                                   <div class="col-xxl-5 col-xl-12 col-lg-12 col-md-12 result-flight-details-airport">
+                                       <img src="images/flight_icon2.png">ir India, AI-865
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl-7 col-xl-12 col-lg-12 col-md-12 result-item-airport airport-settings">
+                                       <div class="result-first-airport"><p>Delhi Indira Gandhi Intl, New Delhi (DEL)</br> Terminal: 3</p></div>
+                                       <div class="result-second-airport"><p>Dubai Intl Arpt, Dubai (DXB)</br> Terminal: 1</p></div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="row">
+                           <div class="col result-flight-details layover-time">
+                               <img src="images/menu_booking.png">
+                               Layover time on Amritsar airport - 3h 15m
+                           </div>
+                       </div>
+                       <div class="row">
+                           <div class="col result-flight-details">
+                               <div class="row">
+                                   <div class="col-xxl-7 col-xl-12 col-lg-12 col-md-12 result-item-airport">
+                                       <div class="result-first-airport"><span>DEL</span><p>10:45, 3 NOV</p></div>
+                                       <div class="depart-line-airport-item-flight"></div>
+                                       <div class="result-second-airport"><span>BOM</span><p>12:55, 3 NOV</p></div>
+                                   </div>
+                                   <div class="col-xxl-5 col-xl-12 col-lg-12 col-md-12 result-flight-details-airport">
+                                       <img src="images/flight_icon2.png">ir India, AI-865
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl-7 col-xl-12 col-lg-12 col-md-12 result-item-airport airport-settings">
+                                       <div class="result-first-airport"><p>Delhi Indira Gandhi Intl, New Delhi (DEL)</br> Terminal: 3</p></div>
+                                       <div class="result-second-airport"><p>Dubai Intl Arpt, Dubai (DXB)</br> Terminal: 1</p></div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="col-xxl col-xl col-lg col-md-2 hidden-for-desktop"><img src="images/yellow-plane.png"></div>
+               </div>
+               <!--Block-4-->
+               <div class="row result-row">
+                   <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2"></div>
+                   <div class="col-xxl-10 col-xl-10 col-lg-10 col-md-8 result-item">
+                       <div class="row">
+                           <div class="col-xxl-5 col-xl-12 col-lg-12 col-md-12">
+                               <div class="row depart-and-arrive-titles">
+                                   <div class="col">
+                                       <div class="depart-title-1280">Depart</div>
+                                       <div class="arrive-title-1280">Arrive</div>
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl result-item-airport">
+                                       <div class="result-first-airport"><span>DEL</span><p>10:45, 3 NOV</p></div>
+                                       <div class="depart-line-airport-item"></div>
+                                       <div class="result-second-airport"><span>BOM</span><p>12:55, 3 NOV</p></div>
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl result-item-flight">
+                                       <span><img src="images/flight_icon1.png">Go Air , G8-448</span>
+                                       <span>
+                                   <img data-toggle="tooltip" data-trigger="click" title="Long layover" src="images/flight_icon3.png">
+                                   <img src="images/flight_icon4.png">
+                                   <img src="images/flight_icon5.png">
+                                   <img src="images/flight_icon6.png">
+                               </span>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="col-xxl-5 col-xl-7 col-lg-8">
+                               <div class="row depart-and-arrive-titles">
+                                   <div class="col">
+                                       <div class="depart-title-1280">Depart</div>
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg result-item-stop">
+                                       <span>2h 10m</span>
+                                       <span>Non-stop</span>
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg result-item-options">
+                                       <a class="baggage-information" href="#"><span>Baggage information</span></a>
+                                       <a class="fare-details" href="#"><span>Fare Details</span></a>
+                                       <a class="flight-details" href="#"><span>Flight Details</span></a>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="col-xxl-2 col-xl-5 col-lg-4 more-details-class">
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg col-md result-item-currency">₹ 6,028</div>
+                                   <div class="col-xxl col-xl col-lg col-md more-details-toggle"><a href="#">More details</a></div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl">
+                                       <a href="#" class="result-item-button btn btn-warning" role="button" aria-pressed="true">Book</a>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <!--Baggage Information-->
+                       <div class="row">
+                           <div class="col result-baggage-information">
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg col-md-12">
+                                       <div class="row">
+                                           <div class="col-xxl col-xl col-lg col-md-12 result-item-airport">
+                                               <img class="icon-before-result-information" src="images/flight_icon2.png">
+                                               <span>DEL</span>
+                                               <img class="line-airport" src="images/line_airport_small.png">
+                                               <span>BOM</span>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col-xxl col-xl col-lg col-md-12 result-information-name"><span>Air India</span></div>
+                                       </div>
+                                   </div>
+                                   <div class="col-xxl col-xl col-lg col-md-12">
+                                       <div class="row option-row-baggage">
+                                           <div class="col-xxl col-xl col-lg col-md-12 result-information-options">
+                                               <span>Check-in</span>
+                                               <span>0 KG/person</span>
+                                           </div>
+                                       </div>
+                                       <div class="row option-row-baggage">
+                                           <div class="col-xxl col-xl col-lg col-md-12 result-information-options">
+                                               <span>Cabin</span>
+                                               <span>0 KG/person</span>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <!--Fare Details-->
+                       <div class="row">
+                           <div class="col result-fare-details">
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg col-md-12">
+                                       <div class="row">
+                                           <div class="col-xxl col-xl-12 result-item-airport">
+                                               <img class="icon-before-result-information" src="images/flight_icon2.png">
+                                               <span>DEL</span>
+                                               <img class="line-airport" src="images/line_airport_small.png">
+                                               <span>BOM</span>
+                                               <div class="result-information-name"><span>Air India</span></div>
+                                           </div>
+                                           <div class="col-xxl col-xl-12"><span class="non-refundable">NON REFUNDABLE</span></div>
+                                       </div>
+                                   </div>
+                                   <div class="col-xxl col-xl col-lg col-md-12">
+                                       <div class="row">
+                                           <div class="col result-information-options">
+                                               <span>Base fare</span>
+                                               <span>₹ 5,586</span>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col result-information-options">
+                                               <span>Taxes & fees</span>
+                                               <span>₹ 481</span>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col result-information-options">
+                                               <span class="total">Total</span>
+                                               <span>₹ 6,067</span>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <!--Flight Details-->
+                       <div class="row">
+                           <div class="col result-flight-details">
+                               <div class="row">
+                                   <div class="col-xxl-7 col-xl-12 col-lg-12 col-md-12 result-item-airport">
+                                       <div class="result-first-airport"><span>DEL</span><p>10:45, 3 NOV</p></div>
+                                       <div class="depart-line-airport-item-flight"></div>
+                                       <div class="result-second-airport"><span>BOM</span><p>12:55, 3 NOV</p></div>
+                                   </div>
+                                   <div class="col-xxl-5 col-xl-12 col-lg-12 col-md-12 result-flight-details-airport">
+                                       <img src="images/flight_icon2.png">ir India, AI-865
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl-7 col-xl-12 col-lg-12 col-md-12 result-item-airport airport-settings">
+                                       <div class="result-first-airport"><p>Delhi Indira Gandhi Intl, New Delhi (DEL)</br> Terminal: 3</p></div>
+                                       <div class="result-second-airport"><p>Dubai Intl Arpt, Dubai (DXB)</br> Terminal: 1</p></div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="row">
+                           <div class="col result-flight-details layover-time">
+                               <img src="images/menu_booking.png">
+                               Layover time on Amritsar airport - 3h 15m
+                           </div>
+                       </div>
+                       <div class="row">
+                           <div class="col result-flight-details">
+                               <div class="row">
+                                   <div class="col-xxl-7 col-xl-12 col-lg-12 col-md-12 result-item-airport">
+                                       <div class="result-first-airport"><span>DEL</span><p>10:45, 3 NOV</p></div>
+                                       <div class="depart-line-airport-item-flight"></div>
+                                       <div class="result-second-airport"><span>BOM</span><p>12:55, 3 NOV</p></div>
+                                   </div>
+                                   <div class="col-xxl-5 col-xl-12 col-lg-12 col-md-12 result-flight-details-airport">
+                                       <img src="images/flight_icon2.png">ir India, AI-865
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl-7 col-xl-12 col-lg-12 col-md-12 result-item-airport airport-settings">
+                                       <div class="result-first-airport"><p>Delhi Indira Gandhi Intl, New Delhi (DEL)</br> Terminal: 3</p></div>
+                                       <div class="result-second-airport"><p>Dubai Intl Arpt, Dubai (DXB)</br> Terminal: 1</p></div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="col-xxl col-xl col-lg col-md-2 hidden-for-desktop"><img src="images/yellow-plane.png"></div>
+               </div>
+               <!--Block-Advert-->
+               <div class="row justify-content-end result-row">
+                   <div class="col-xxl-10 col-xl-10 col-lg-10 result-item advert">
+                        <img class="result-advert-banner" src="images/result_advert_banner.png">
+                    </div>
+               </div>
+               <!--Block-5-->
+               <div class="row result-row">
+                   <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2"><div class="result-button">Best price<span class="result-button-bg"></span></div></div>
+                   <div class="col-xxl-10 col-xl-10 col-lg-10 col-md-8 result-item">
+                       <div class="row">
+                           <div class="col-xxl-5 col-xl-12 col-lg-12 col-md-12">
+                               <div class="row depart-and-arrive-titles">
+                                   <div class="col">
+                                       <div class="depart-title-1280">Depart</div>
+                                       <div class="arrive-title-1280">Arrive</div>
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl result-item-airport">
+                                       <div class="result-first-airport"><span>DEL</span><p>10:45, 3 NOV</p></div>
+                                       <div class="depart-line-airport-item"></div>
+                                       <div class="result-second-airport"><span>BOM</span><p>12:55, 3 NOV</p></div>
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl result-item-flight">
+                                       <span><img src="images/flight_icon1.png">Go Air , G8-448</span>
+                                       <span>
+                                   <img data-toggle="tooltip" data-trigger="click" title="Long layover" src="images/flight_icon3.png">
+                                   <img src="images/flight_icon4.png">
+                                   <img src="images/flight_icon5.png">
+                                   <img src="images/flight_icon6.png">
+                               </span>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="col-xxl-5 col-xl-7 col-lg-8">
+                               <div class="row depart-and-arrive-titles">
+                                   <div class="col">
+                                       <div class="depart-title-1280">Depart</div>
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg result-item-stop">
+                                       <span>2h 10m</span>
+                                       <span>Non-stop</span>
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg result-item-options">
+                                       <a class="baggage-information" href="#"><span>Baggage information</span></a>
+                                       <a class="fare-details" href="#"><span>Fare Details</span></a>
+                                       <a class="flight-details" href="#"><span>Flight Details</span></a>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="col-xxl-2 col-xl-5 col-lg-4 more-details-class">
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg col-md result-item-currency">₹ 6,028</div>
+                                   <div class="col-xxl col-xl col-lg col-md more-details-toggle"><a href="#">More details</a></div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl">
+                                       <a href="#" class="result-item-button btn btn-warning" role="button" aria-pressed="true">Book</a>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <!--Baggage Information-->
+                       <div class="row">
+                           <div class="col result-baggage-information">
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg col-md-12">
+                                       <div class="row">
+                                           <div class="col-xxl col-xl col-lg col-md-12 result-item-airport">
+                                               <img class="icon-before-result-information" src="images/flight_icon2.png">
+                                               <span>DEL</span>
+                                               <img class="line-airport" src="images/line_airport_small.png">
+                                               <span>BOM</span>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col-xxl col-xl col-lg col-md-12 result-information-name"><span>Air India</span></div>
+                                       </div>
+                                   </div>
+                                   <div class="col-xxl col-xl col-lg col-md-12">
+                                       <div class="row option-row-baggage">
+                                           <div class="col-xxl col-xl col-lg col-md-12 result-information-options">
+                                               <span>Check-in</span>
+                                               <span>0 KG/person</span>
+                                           </div>
+                                       </div>
+                                       <div class="row option-row-baggage">
+                                           <div class="col-xxl col-xl col-lg col-md-12 result-information-options">
+                                               <span>Cabin</span>
+                                               <span>0 KG/person</span>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <!--Fare Details-->
+                       <div class="row">
+                           <div class="col result-fare-details">
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg col-md-12">
+                                       <div class="row">
+                                           <div class="col-xxl col-xl-12 result-item-airport">
+                                               <img class="icon-before-result-information" src="images/flight_icon2.png">
+                                               <span>DEL</span>
+                                               <img class="line-airport" src="images/line_airport_small.png">
+                                               <span>BOM</span>
+                                               <div class="result-information-name"><span>Air India</span></div>
+                                           </div>
+                                           <div class="col-xxl col-xl-12"><span class="non-refundable">NON REFUNDABLE</span></div>
+                                       </div>
+                                   </div>
+                                   <div class="col-xxl col-xl col-lg col-md-12">
+                                       <div class="row">
+                                           <div class="col result-information-options">
+                                               <span>Base fare</span>
+                                               <span>₹ 5,586</span>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col result-information-options">
+                                               <span>Taxes & fees</span>
+                                               <span>₹ 481</span>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col result-information-options">
+                                               <span class="total">Total</span>
+                                               <span>₹ 6,067</span>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <!--Flight Details-->
+                       <div class="row">
+                           <div class="col result-flight-details">
+                               <div class="row">
+                                   <div class="col-xxl-7 col-xl-12 col-lg-12 col-md-12 result-item-airport">
+                                       <div class="result-first-airport"><span>DEL</span><p>10:45, 3 NOV</p></div>
+                                       <div class="depart-line-airport-item-flight"></div>
+                                       <div class="result-second-airport"><span>BOM</span><p>12:55, 3 NOV</p></div>
+                                   </div>
+                                   <div class="col-xxl-5 col-xl-12 col-lg-12 col-md-12 result-flight-details-airport">
+                                       <img src="images/flight_icon2.png">ir India, AI-865
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl-7 col-xl-12 col-lg-12 col-md-12 result-item-airport airport-settings">
+                                       <div class="result-first-airport"><p>Delhi Indira Gandhi Intl, New Delhi (DEL)</br> Terminal: 3</p></div>
+                                       <div class="result-second-airport"><p>Dubai Intl Arpt, Dubai (DXB)</br> Terminal: 1</p></div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="row">
+                           <div class="col result-flight-details layover-time">
+                               <img src="images/menu_booking.png">
+                               Layover time on Amritsar airport - 3h 15m
+                           </div>
+                       </div>
+                       <div class="row">
+                           <div class="col result-flight-details">
+                               <div class="row">
+                                   <div class="col-xxl-7 col-xl-12 col-lg-12 col-md-12 result-item-airport">
+                                       <div class="result-first-airport"><span>DEL</span><p>10:45, 3 NOV</p></div>
+                                       <div class="depart-line-airport-item-flight"></div>
+                                       <div class="result-second-airport"><span>BOM</span><p>12:55, 3 NOV</p></div>
+                                   </div>
+                                   <div class="col-xxl-5 col-xl-12 col-lg-12 col-md-12 result-flight-details-airport">
+                                       <img src="images/flight_icon2.png">ir India, AI-865
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl-7 col-xl-12 col-lg-12 col-md-12 result-item-airport airport-settings">
+                                       <div class="result-first-airport"><p>Delhi Indira Gandhi Intl, New Delhi (DEL)</br> Terminal: 3</p></div>
+                                       <div class="result-second-airport"><p>Dubai Intl Arpt, Dubai (DXB)</br> Terminal: 1</p></div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="col-xxl col-xl col-lg col-md-2 hidden-for-desktop"><img src="images/yellow-plane.png"></div>
+               </div>
+               <!--Block-6-->
+               <div class="row result-row">
+                   <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2"></div>
+                   <div class="col-xxl-10 col-xl-10 col-lg-10 col-md-8 result-item">
+                       <div class="row">
+                           <div class="col-xxl-5 col-xl-12 col-lg-12 col-md-12">
+                               <div class="row depart-and-arrive-titles">
+                                   <div class="col">
+                                       <div class="depart-title-1280">Depart</div>
+                                       <div class="arrive-title-1280">Arrive</div>
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl result-item-airport">
+                                       <div class="result-first-airport"><span>DEL</span><p>10:45, 3 NOV</p></div>
+                                       <div class="depart-line-airport-item"></div>
+                                       <div class="result-second-airport"><span>BOM</span><p>12:55, 3 NOV</p></div>
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl result-item-flight">
+                                       <span><img src="images/flight_icon2.png">Go Air , G8-448</span>
+                                       <span>
+                                   <img data-toggle="tooltip" data-trigger="click" title="Long layover" src="images/flight_icon3.png">
+                                   <img src="images/flight_icon4.png">
+                                   <img src="images/flight_icon5.png">
+                                   <img src="images/flight_icon6.png">
+                               </span>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="col-xxl-5 col-xl-7 col-lg-8">
+                               <div class="row depart-and-arrive-titles">
+                                   <div class="col">
+                                       <div class="depart-title-1280">Depart</div>
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg result-item-stop">
+                                       <span>2h 10m</span>
+                                       <span>Non-stop</span>
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg result-item-options">
+                                       <a class="baggage-information" href="#"><span>Baggage information</span></a>
+                                       <a class="fare-details" href="#"><span>Fare Details</span></a>
+                                       <a class="flight-details" href="#"><span>Flight Details</span></a>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="col-xxl-2 col-xl-5 col-lg-4 more-details-class">
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg col-md result-item-currency">₹ 6,028</div>
+                                   <div class="col-xxl col-xl col-lg col-md more-details-toggle"><a href="#">More details</a></div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl">
+                                       <a href="#" class="result-item-button btn btn-warning" role="button" aria-pressed="true">Book</a>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <!--Baggage Information-->
+                       <div class="row">
+                           <div class="col result-baggage-information">
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg col-md-12">
+                                       <div class="row">
+                                           <div class="col-xxl col-xl col-lg col-md-12 result-item-airport">
+                                               <img class="icon-before-result-information" src="images/flight_icon2.png">
+                                               <span>DEL</span>
+                                               <img class="line-airport" src="images/line_airport_small.png">
+                                               <span>BOM</span>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col-xxl col-xl col-lg col-md-12 result-information-name"><span>Air India</span></div>
+                                       </div>
+                                   </div>
+                                   <div class="col-xxl col-xl col-lg col-md-12">
+                                       <div class="row option-row-baggage">
+                                           <div class="col-xxl col-xl col-lg col-md-12 result-information-options">
+                                               <span>Check-in</span>
+                                               <span>0 KG/person</span>
+                                           </div>
+                                       </div>
+                                       <div class="row option-row-baggage">
+                                           <div class="col-xxl col-xl col-lg col-md-12 result-information-options">
+                                               <span>Cabin</span>
+                                               <span>0 KG/person</span>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <!--Fare Details-->
+                       <div class="row">
+                           <div class="col result-fare-details">
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg col-md-12">
+                                       <div class="row">
+                                           <div class="col-xxl col-xl-12 result-item-airport">
+                                               <img class="icon-before-result-information" src="images/flight_icon2.png">
+                                               <span>DEL</span>
+                                               <img class="line-airport" src="images/line_airport_small.png">
+                                               <span>BOM</span>
+                                               <div class="result-information-name"><span>Air India</span></div>
+                                           </div>
+                                           <div class="col-xxl col-xl-12"><span class="non-refundable">NON REFUNDABLE</span></div>
+                                       </div>
+                                   </div>
+                                   <div class="col-xxl col-xl col-lg col-md-12">
+                                       <div class="row">
+                                           <div class="col result-information-options">
+                                               <span>Base fare</span>
+                                               <span>₹ 5,586</span>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col result-information-options">
+                                               <span>Taxes & fees</span>
+                                               <span>₹ 481</span>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col result-information-options">
+                                               <span class="total">Total</span>
+                                               <span>₹ 6,067</span>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <!--Flight Details-->
+                       <div class="row">
+                           <div class="col result-flight-details">
+                               <div class="row">
+                                   <div class="col-xxl-7 col-xl-12 col-lg-12 col-md-12 result-item-airport">
+                                       <div class="result-first-airport"><span>DEL</span><p>10:45, 3 NOV</p></div>
+                                       <div class="depart-line-airport-item-flight"></div>
+                                       <div class="result-second-airport"><span>BOM</span><p>12:55, 3 NOV</p></div>
+                                   </div>
+                                   <div class="col-xxl-5 col-xl-12 col-lg-12 col-md-12 result-flight-details-airport">
+                                       <img src="images/flight_icon2.png">ir India, AI-865
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl-7 col-xl-12 col-lg-12 col-md-12 result-item-airport airport-settings">
+                                       <div class="result-first-airport"><p>Delhi Indira Gandhi Intl, New Delhi (DEL)</br> Terminal: 3</p></div>
+                                       <div class="result-second-airport"><p>Dubai Intl Arpt, Dubai (DXB)</br> Terminal: 1</p></div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="row">
+                           <div class="col result-flight-details layover-time">
+                               <img src="images/menu_booking.png">
+                               Layover time on Amritsar airport - 3h 15m
+                           </div>
+                       </div>
+                       <div class="row">
+                           <div class="col result-flight-details">
+                               <div class="row">
+                                   <div class="col-xxl-7 col-xl-12 col-lg-12 col-md-12 result-item-airport">
+                                       <div class="result-first-airport"><span>DEL</span><p>10:45, 3 NOV</p></div>
+                                       <div class="depart-line-airport-item-flight"></div>
+                                       <div class="result-second-airport"><span>BOM</span><p>12:55, 3 NOV</p></div>
+                                   </div>
+                                   <div class="col-xxl-5 col-xl-12 col-lg-12 col-md-12 result-flight-details-airport">
+                                       <img src="images/flight_icon2.png">ir India, AI-865
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl-7 col-xl-12 col-lg-12 col-md-12 result-item-airport airport-settings">
+                                       <div class="result-first-airport"><p>Delhi Indira Gandhi Intl, New Delhi (DEL)</br> Terminal: 3</p></div>
+                                       <div class="result-second-airport"><p>Dubai Intl Arpt, Dubai (DXB)</br> Terminal: 1</p></div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="col-xxl col-xl col-lg col-md-2 hidden-for-desktop"><img src="images/yellow-plane.png"></div>
+               </div>
+               <!--Block-7-->
+               <div class="row result-row">
+                   <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2"></div>
+                   <div class="col-xxl-10 col-xl-10 col-lg-10 col-md-8 result-item">
+                       <div class="row">
+                           <div class="col-xxl-5 col-xl-12 col-lg-12 col-md-12">
+                               <div class="row depart-and-arrive-titles">
+                                   <div class="col">
+                                       <div class="depart-title-1280">Depart</div>
+                                       <div class="arrive-title-1280">Arrive</div>
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl result-item-airport">
+                                       <div class="result-first-airport"><span>DEL</span><p>10:45, 3 NOV</p></div>
+                                       <div class="stop-point-image">
+                                           <div class="stop-point-image"><div class="depart-line-airport-item"></div></div>
+                                           <div class="stop-point" data-html="true" data-toggle="tooltip"
+                                                data-trigger="click" title="<span>Transfer on Amritsar</span><p>Depart: 11:15</p><p>Arrive: 16:30</p>">
+                                               <div class="stop-point-hours">3h 15m</div>
+                                           </div>
+                                       </div>
+                                       <div class="result-second-airport"><span>BOM</span><p>12:55, 3 NOV</p></div>
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl result-item-flight">
+                                       <span><img src="images/flight_icon2.png">Go Air , G8-448</span>
+                                       <span>
+                                   <img data-toggle="tooltip" data-trigger="click" title="Long layover" src="images/flight_icon3.png">
+                                   <img src="images/flight_icon4.png">
+                                   <img src="images/flight_icon5.png">
+                                   <img src="images/flight_icon6.png">
+                               </span>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="col-xxl-5 col-xl-7 col-lg-8">
+                               <div class="row depart-and-arrive-titles">
+                                   <div class="col">
+                                       <div class="depart-title-1280">Depart</div>
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg result-item-stop">
+                                       <span>2h 10m</span>
+                                       <span>Non-stop</span>
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg result-item-options">
+                                       <a class="baggage-information" href="#"><span>Baggage information</span></a>
+                                       <a class="fare-details" href="#"><span>Fare Details</span></a>
+                                       <a class="flight-details" href="#"><span>Flight Details</span></a>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="col-xxl-2 col-xl-5 col-lg-4 more-details-class">
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg col-md result-item-currency">₹ 6,028</div>
+                                   <div class="col-xxl col-xl col-lg col-md more-details-toggle"><a href="#">More details</a></div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl">
+                                       <a href="#" class="result-item-button btn btn-warning" role="button" aria-pressed="true">Book</a>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <!--Baggage Information-->
+                       <div class="row">
+                           <div class="col result-baggage-information">
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg col-md-12">
+                                       <div class="row">
+                                           <div class="col-xxl col-xl col-lg col-md-12 result-item-airport">
+                                               <img class="icon-before-result-information" src="images/flight_icon2.png">
+                                               <span>DEL</span>
+                                               <img class="line-airport" src="images/line_airport_small.png">
+                                               <span>BOM</span>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col-xxl col-xl col-lg col-md-12 result-information-name"><span>Air India</span></div>
+                                       </div>
+                                   </div>
+                                   <div class="col-xxl col-xl col-lg col-md-12">
+                                       <div class="row option-row-baggage">
+                                           <div class="col-xxl col-xl col-lg col-md-12 result-information-options">
+                                               <span>Check-in</span>
+                                               <span>0 KG/person</span>
+                                           </div>
+                                       </div>
+                                       <div class="row option-row-baggage">
+                                           <div class="col-xxl col-xl col-lg col-md-12 result-information-options">
+                                               <span>Cabin</span>
+                                               <span>0 KG/person</span>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <!--Fare Details-->
+                       <div class="row">
+                           <div class="col result-fare-details">
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg col-md-12">
+                                       <div class="row">
+                                           <div class="col-xxl col-xl-12 result-item-airport">
+                                               <img class="icon-before-result-information" src="images/flight_icon2.png">
+                                               <span>DEL</span>
+                                               <img class="line-airport" src="images/line_airport_small.png">
+                                               <span>BOM</span>
+                                               <div class="result-information-name"><span>Air India</span></div>
+                                           </div>
+                                           <div class="col-xxl col-xl-12"><span class="non-refundable">NON REFUNDABLE</span></div>
+                                       </div>
+                                   </div>
+                                   <div class="col-xxl col-xl col-lg col-md-12">
+                                       <div class="row">
+                                           <div class="col result-information-options">
+                                               <span>Base fare</span>
+                                               <span>₹ 5,586</span>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col result-information-options">
+                                               <span>Taxes & fees</span>
+                                               <span>₹ 481</span>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col result-information-options">
+                                               <span class="total">Total</span>
+                                               <span>₹ 6,067</span>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <!--Flight Details-->
+                       <div class="row">
+                           <div class="col result-flight-details">
+                               <div class="row">
+                                   <div class="col-xxl-7 col-xl-12 col-lg-12 col-md-12 result-item-airport">
+                                       <div class="result-first-airport"><span>DEL</span><p>10:45, 3 NOV</p></div>
+                                       <div class="depart-line-airport-item-flight"></div>
+                                       <div class="result-second-airport"><span>BOM</span><p>12:55, 3 NOV</p></div>
+                                   </div>
+                                   <div class="col-xxl-5 col-xl-12 col-lg-12 col-md-12 result-flight-details-airport">
+                                       <img src="images/flight_icon2.png">ir India, AI-865
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl-7 col-xl-12 col-lg-12 col-md-12 result-item-airport airport-settings">
+                                       <div class="result-first-airport"><p>Delhi Indira Gandhi Intl, New Delhi (DEL)</br> Terminal: 3</p></div>
+                                       <div class="result-second-airport"><p>Dubai Intl Arpt, Dubai (DXB)</br> Terminal: 1</p></div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="row">
+                           <div class="col result-flight-details layover-time">
+                               <img src="images/menu_booking.png">
+                               Layover time on Amritsar airport - 3h 15m
+                           </div>
+                       </div>
+                       <div class="row">
+                           <div class="col result-flight-details">
+                               <div class="row">
+                                   <div class="col-xxl-7 col-xl-12 col-lg-12 col-md-12 result-item-airport">
+                                       <div class="result-first-airport"><span>DEL</span><p>10:45, 3 NOV</p></div>
+                                       <div class="depart-line-airport-item-flight"></div>
+                                       <div class="result-second-airport"><span>BOM</span><p>12:55, 3 NOV</p></div>
+                                   </div>
+                                   <div class="col-xxl-5 col-xl-12 col-lg-12 col-md-12 result-flight-details-airport">
+                                       <img src="images/flight_icon2.png">ir India, AI-865
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl-7 col-xl-12 col-lg-12 col-md-12 result-item-airport airport-settings">
+                                       <div class="result-first-airport"><p>Delhi Indira Gandhi Intl, New Delhi (DEL)</br> Terminal: 3</p></div>
+                                       <div class="result-second-airport"><p>Dubai Intl Arpt, Dubai (DXB)</br> Terminal: 1</p></div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="col-xxl col-xl col-lg col-md-2 hidden-for-desktop"><img src="images/yellow-plane.png"></div>
+               </div>
+               <!--Block-8-->
+               <div class="row result-row">
+                   <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2"></div>
+                   <div class="col-xxl-10 col-xl-10 col-lg-10 col-md-8 result-item">
+                       <div class="row">
+                           <div class="col-xxl-5 col-xl-12 col-lg-12 col-md-12">
+                               <div class="row depart-and-arrive-titles">
+                                   <div class="col">
+                                       <div class="depart-title-1280">Depart</div>
+                                       <div class="arrive-title-1280">Arrive</div>
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl result-item-airport">
+                                       <div class="result-first-airport"><span>DEL</span><p>10:45, 3 NOV</p></div>
+                                       <div class="depart-line-airport-item"></div>
+                                       <div class="result-second-airport"><span>BOM</span><p>12:55, 3 NOV</p></div>
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl result-item-flight">
+                                       <span><img src="images/flight_icon1.png">Go Air , G8-448</span>
+                                       <span>
+                                   <img data-toggle="tooltip" data-trigger="click" title="Long layover" src="images/flight_icon3.png">
+                                   <img src="images/flight_icon4.png">
+                                   <img src="images/flight_icon5.png">
+                                   <img src="images/flight_icon6.png">
+                               </span>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="col-xxl-5 col-xl-7 col-lg-8">
+                               <div class="row depart-and-arrive-titles">
+                                   <div class="col">
+                                       <div class="depart-title-1280">Depart</div>
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg result-item-stop">
+                                       <span>2h 10m</span>
+                                       <span>Non-stop</span>
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg result-item-options">
+                                       <a class="baggage-information" href="#"><span>Baggage information</span></a>
+                                       <a class="fare-details" href="#"><span>Fare Details</span></a>
+                                       <a class="flight-details" href="#"><span>Flight Details</span></a>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="col-xxl-2 col-xl-5 col-lg-4 more-details-class">
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg col-md result-item-currency">₹ 6,028</div>
+                                   <div class="col-xxl col-xl col-lg col-md more-details-toggle"><a href="#">More details</a></div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl">
+                                       <a href="#" class="result-item-button btn btn-warning" role="button" aria-pressed="true">Book</a>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <!--Baggage Information-->
+                       <div class="row">
+                           <div class="col result-baggage-information">
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg col-md-12">
+                                       <div class="row">
+                                           <div class="col-xxl col-xl col-lg col-md-12 result-item-airport">
+                                               <img class="icon-before-result-information" src="images/flight_icon2.png">
+                                               <span>DEL</span>
+                                               <img class="line-airport" src="images/line_airport_small.png">
+                                               <span>BOM</span>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col-xxl col-xl col-lg col-md-12 result-information-name"><span>Air India</span></div>
+                                       </div>
+                                   </div>
+                                   <div class="col-xxl col-xl col-lg col-md-12">
+                                       <div class="row option-row-baggage">
+                                           <div class="col-xxl col-xl col-lg col-md-12 result-information-options">
+                                               <span>Check-in</span>
+                                               <span>0 KG/person</span>
+                                           </div>
+                                       </div>
+                                       <div class="row option-row-baggage">
+                                           <div class="col-xxl col-xl col-lg col-md-12 result-information-options">
+                                               <span>Cabin</span>
+                                               <span>0 KG/person</span>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <!--Fare Details-->
+                       <div class="row">
+                           <div class="col result-fare-details">
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg col-md-12">
+                                       <div class="row">
+                                           <div class="col-xxl col-xl-12 result-item-airport">
+                                               <img class="icon-before-result-information" src="images/flight_icon2.png">
+                                               <span>DEL</span>
+                                               <img class="line-airport" src="images/line_airport_small.png">
+                                               <span>BOM</span>
+                                               <div class="result-information-name"><span>Air India</span></div>
+                                           </div>
+                                           <div class="col-xxl col-xl-12"><span class="non-refundable">NON REFUNDABLE</span></div>
+                                       </div>
+                                   </div>
+                                   <div class="col-xxl col-xl col-lg col-md-12">
+                                       <div class="row">
+                                           <div class="col result-information-options">
+                                               <span>Base fare</span>
+                                               <span>₹ 5,586</span>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col result-information-options">
+                                               <span>Taxes & fees</span>
+                                               <span>₹ 481</span>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col result-information-options">
+                                               <span class="total">Total</span>
+                                               <span>₹ 6,067</span>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <!--Flight Details-->
+                       <div class="row">
+                           <div class="col result-flight-details">
+                               <div class="row">
+                                   <div class="col-xxl-7 col-xl-12 col-lg-12 col-md-12 result-item-airport">
+                                       <div class="result-first-airport"><span>DEL</span><p>10:45, 3 NOV</p></div>
+                                       <div class="depart-line-airport-item-flight"></div>
+                                       <div class="result-second-airport"><span>BOM</span><p>12:55, 3 NOV</p></div>
+                                   </div>
+                                   <div class="col-xxl-5 col-xl-12 col-lg-12 col-md-12 result-flight-details-airport">
+                                       <img src="images/flight_icon2.png">ir India, AI-865
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl-7 col-xl-12 col-lg-12 col-md-12 result-item-airport airport-settings">
+                                       <div class="result-first-airport"><p>Delhi Indira Gandhi Intl, New Delhi (DEL)</br> Terminal: 3</p></div>
+                                       <div class="result-second-airport"><p>Dubai Intl Arpt, Dubai (DXB)</br> Terminal: 1</p></div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="row">
+                           <div class="col result-flight-details layover-time">
+                               <img src="images/menu_booking.png">
+                               Layover time on Amritsar airport - 3h 15m
+                           </div>
+                       </div>
+                       <div class="row">
+                           <div class="col result-flight-details">
+                               <div class="row">
+                                   <div class="col-xxl-7 col-xl-12 col-lg-12 col-md-12 result-item-airport">
+                                       <div class="result-first-airport"><span>DEL</span><p>10:45, 3 NOV</p></div>
+                                       <div class="depart-line-airport-item-flight"></div>
+                                       <div class="result-second-airport"><span>BOM</span><p>12:55, 3 NOV</p></div>
+                                   </div>
+                                   <div class="col-xxl-5 col-xl-12 col-lg-12 col-md-12 result-flight-details-airport">
+                                       <img src="images/flight_icon2.png">ir India, AI-865
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl-7 col-xl-12 col-lg-12 col-md-12 result-item-airport airport-settings">
+                                       <div class="result-first-airport"><p>Delhi Indira Gandhi Intl, New Delhi (DEL)</br> Terminal: 3</p></div>
+                                       <div class="result-second-airport"><p>Dubai Intl Arpt, Dubai (DXB)</br> Terminal: 1</p></div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="col-xxl col-xl col-lg col-md-2 hidden-for-desktop"><img src="images/yellow-plane.png"></div>
+               </div>
+               <!--Block-Advert-->
+               <div class="row justify-content-end result-row">
+                   <div class="col-xxl-10 col-xl-10 col-lg-10 result-item advert">
+                       <img class="result-advert-banner" src="images/result_advert_banner.png">
+                   </div>
+               </div>
+               <!--Block-9-->
+               <div class="row result-row">
+                   <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2"></div>
+                   <div class="col-xxl-10 col-xl-10 col-lg-10 col-md-8 result-item">
+                       <div class="row">
+                           <div class="col-xxl-5 col-xl-12 col-lg-12 col-md-12">
+                               <div class="row depart-and-arrive-titles">
+                                   <div class="col">
+                                       <div class="depart-title-1280">Depart</div>
+                                       <div class="arrive-title-1280">Arrive</div>
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl result-item-airport">
+                                       <div class="result-first-airport"><span>DEL</span><p>10:45, 3 NOV</p></div>
+                                       <div class="depart-line-airport-item"></div>
+                                       <div class="result-second-airport"><span>BOM</span><p>12:55, 3 NOV</p></div>
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl result-item-flight">
+                                       <span><img src="images/flight_icon1.png">Go Air , G8-448</span>
+                                       <span>
+                                   <img data-toggle="tooltip" data-trigger="click" title="Long layover" src="images/flight_icon3.png">
+                                   <img src="images/flight_icon4.png">
+                                   <img src="images/flight_icon5.png">
+                                   <img src="images/flight_icon6.png">
+                               </span>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="col-xxl-5 col-xl-7 col-lg-8">
+                               <div class="row depart-and-arrive-titles">
+                                   <div class="col">
+                                       <div class="depart-title-1280">Depart</div>
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg result-item-stop">
+                                       <span>2h 10m</span>
+                                       <span>Non-stop</span>
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg result-item-options">
+                                       <a class="baggage-information" href="#"><span>Baggage information</span></a>
+                                       <a class="fare-details" href="#"><span>Fare Details</span></a>
+                                       <a class="flight-details" href="#"><span>Flight Details</span></a>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="col-xxl-2 col-xl-5 col-lg-4 more-details-class">
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg col-md result-item-currency">₹ 6,028</div>
+                                   <div class="col-xxl col-xl col-lg col-md more-details-toggle"><a href="#">More details</a></div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl">
+                                       <a href="#" class="result-item-button btn btn-warning" role="button" aria-pressed="true">Book</a>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <!--Baggage Information-->
+                       <div class="row">
+                           <div class="col result-baggage-information">
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg col-md-12">
+                                       <div class="row">
+                                           <div class="col-xxl col-xl col-lg col-md-12 result-item-airport">
+                                               <img class="icon-before-result-information" src="images/flight_icon2.png">
+                                               <span>DEL</span>
+                                               <img class="line-airport" src="images/line_airport_small.png">
+                                               <span>BOM</span>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col-xxl col-xl col-lg col-md-12 result-information-name"><span>Air India</span></div>
+                                       </div>
+                                   </div>
+                                   <div class="col-xxl col-xl col-lg col-md-12">
+                                       <div class="row option-row-baggage">
+                                           <div class="col-xxl col-xl col-lg col-md-12 result-information-options">
+                                               <span>Check-in</span>
+                                               <span>0 KG/person</span>
+                                           </div>
+                                       </div>
+                                       <div class="row option-row-baggage">
+                                           <div class="col-xxl col-xl col-lg col-md-12 result-information-options">
+                                               <span>Cabin</span>
+                                               <span>0 KG/person</span>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <!--Fare Details-->
+                       <div class="row">
+                           <div class="col result-fare-details">
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg col-md-12">
+                                       <div class="row">
+                                           <div class="col-xxl col-xl-12 result-item-airport">
+                                               <img class="icon-before-result-information" src="images/flight_icon2.png">
+                                               <span>DEL</span>
+                                               <img class="line-airport" src="images/line_airport_small.png">
+                                               <span>BOM</span>
+                                               <div class="result-information-name"><span>Air India</span></div>
+                                           </div>
+                                           <div class="col-xxl col-xl-12"><span class="non-refundable">NON REFUNDABLE</span></div>
+                                       </div>
+                                   </div>
+                                   <div class="col-xxl col-xl col-lg col-md-12">
+                                       <div class="row">
+                                           <div class="col result-information-options">
+                                               <span>Base fare</span>
+                                               <span>₹ 5,586</span>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col result-information-options">
+                                               <span>Taxes & fees</span>
+                                               <span>₹ 481</span>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col result-information-options">
+                                               <span class="total">Total</span>
+                                               <span>₹ 6,067</span>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <!--Flight Details-->
+                       <div class="row">
+                           <div class="col result-flight-details">
+                               <div class="row">
+                                   <div class="col-xxl-7 col-xl-12 col-lg-12 col-md-12 result-item-airport">
+                                       <div class="result-first-airport"><span>DEL</span><p>10:45, 3 NOV</p></div>
+                                       <div class="depart-line-airport-item-flight"></div>
+                                       <div class="result-second-airport"><span>BOM</span><p>12:55, 3 NOV</p></div>
+                                   </div>
+                                   <div class="col-xxl-5 col-xl-12 col-lg-12 col-md-12 result-flight-details-airport">
+                                       <img src="images/flight_icon2.png">ir India, AI-865
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl-7 col-xl-12 col-lg-12 col-md-12 result-item-airport airport-settings">
+                                       <div class="result-first-airport"><p>Delhi Indira Gandhi Intl, New Delhi (DEL)</br> Terminal: 3</p></div>
+                                       <div class="result-second-airport"><p>Dubai Intl Arpt, Dubai (DXB)</br> Terminal: 1</p></div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="row">
+                           <div class="col result-flight-details layover-time">
+                               <img src="images/menu_booking.png">
+                               Layover time on Amritsar airport - 3h 15m
+                           </div>
+                       </div>
+                       <div class="row">
+                           <div class="col result-flight-details">
+                               <div class="row">
+                                   <div class="col-xxl-7 col-xl-12 col-lg-12 col-md-12 result-item-airport">
+                                       <div class="result-first-airport"><span>DEL</span><p>10:45, 3 NOV</p></div>
+                                       <div class="depart-line-airport-item-flight"></div>
+                                       <div class="result-second-airport"><span>BOM</span><p>12:55, 3 NOV</p></div>
+                                   </div>
+                                   <div class="col-xxl-5 col-xl-12 col-lg-12 col-md-12 result-flight-details-airport">
+                                       <img src="images/flight_icon2.png">ir India, AI-865
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl-7 col-xl-12 col-lg-12 col-md-12 result-item-airport airport-settings">
+                                       <div class="result-first-airport"><p>Delhi Indira Gandhi Intl, New Delhi (DEL)</br> Terminal: 3</p></div>
+                                       <div class="result-second-airport"><p>Dubai Intl Arpt, Dubai (DXB)</br> Terminal: 1</p></div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="col-xxl col-xl col-lg col-md-2 hidden-for-desktop"><img src="images/yellow-plane.png"></div>
+               </div>
+               <!--Block-10-->
+               <div class="row result-row">
+                   <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2"></div>
+                   <div class="col-xxl-10 col-xl-10 col-lg-10 col-md-8 result-item">
+                       <div class="row">
+                           <div class="col-xxl-5 col-xl-12 col-lg-12 col-md-12">
+                               <div class="row depart-and-arrive-titles">
+                                   <div class="col">
+                                       <div class="depart-title-1280">Depart</div>
+                                       <div class="arrive-title-1280">Arrive</div>
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl result-item-airport">
+                                       <div class="result-first-airport"><span>DEL</span><p>10:45, 3 NOV</p></div>
+                                       <div class="depart-line-airport-item"></div>
+                                       <div class="result-second-airport"><span>BOM</span><p>12:55, 3 NOV</p></div>
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl result-item-flight">
+                                       <span><img src="images/flight_icon2.png">Go Air , G8-448</span>
+                                       <span>
+                                   <img data-toggle="tooltip" data-trigger="click" title="Long layover" src="images/flight_icon3.png">
+                                   <img src="images/flight_icon4.png">
+                                   <img src="images/flight_icon5.png">
+                                   <img src="images/flight_icon6.png">
+                               </span>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="col-xxl-5 col-xl-7 col-lg-8">
+                               <div class="row depart-and-arrive-titles">
+                                   <div class="col">
+                                       <div class="depart-title-1280">Depart</div>
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg result-item-stop">
+                                       <span>2h 10m</span>
+                                       <span>Non-stop</span>
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg result-item-options">
+                                       <a class="baggage-information" href="#"><span>Baggage information</span></a>
+                                       <a class="fare-details" href="#"><span>Fare Details</span></a>
+                                       <a class="flight-details" href="#"><span>Flight Details</span></a>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="col-xxl-2 col-xl-5 col-lg-4 more-details-class">
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg col-md result-item-currency">₹ 6,028</div>
+                                   <div class="col-xxl col-xl col-lg col-md more-details-toggle"><a href="#">More details</a></div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl col-xl">
+                                       <a href="#" class="result-item-button btn btn-warning" role="button" aria-pressed="true">Book</a>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <!--Baggage Information-->
+                       <div class="row">
+                           <div class="col result-baggage-information">
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg col-md-12">
+                                       <div class="row">
+                                           <div class="col-xxl col-xl col-lg col-md-12 result-item-airport">
+                                               <img class="icon-before-result-information" src="images/flight_icon2.png">
+                                               <span>DEL</span>
+                                               <img class="line-airport" src="images/line_airport_small.png">
+                                               <span>BOM</span>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col-xxl col-xl col-lg col-md-12 result-information-name"><span>Air India</span></div>
+                                       </div>
+                                   </div>
+                                   <div class="col-xxl col-xl col-lg col-md-12">
+                                       <div class="row option-row-baggage">
+                                           <div class="col-xxl col-xl col-lg col-md-12 result-information-options">
+                                               <span>Check-in</span>
+                                               <span>0 KG/person</span>
+                                           </div>
+                                       </div>
+                                       <div class="row option-row-baggage">
+                                           <div class="col-xxl col-xl col-lg col-md-12 result-information-options">
+                                               <span>Cabin</span>
+                                               <span>0 KG/person</span>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <!--Fare Details-->
+                       <div class="row">
+                           <div class="col result-fare-details">
+                               <div class="row">
+                                   <div class="col-xxl col-xl col-lg col-md-12">
+                                       <div class="row">
+                                           <div class="col-xxl col-xl-12 result-item-airport">
+                                               <img class="icon-before-result-information" src="images/flight_icon2.png">
+                                               <span>DEL</span>
+                                               <img class="line-airport" src="images/line_airport_small.png">
+                                               <span>BOM</span>
+                                               <div class="result-information-name"><span>Air India</span></div>
+                                           </div>
+                                           <div class="col-xxl col-xl-12"><span class="non-refundable">NON REFUNDABLE</span></div>
+                                       </div>
+                                   </div>
+                                   <div class="col-xxl col-xl col-lg col-md-12">
+                                       <div class="row">
+                                           <div class="col result-information-options">
+                                               <span>Base fare</span>
+                                               <span>₹ 5,586</span>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col result-information-options">
+                                               <span>Taxes & fees</span>
+                                               <span>₹ 481</span>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                           <div class="col result-information-options">
+                                               <span class="total">Total</span>
+                                               <span>₹ 6,067</span>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <!--Flight Details-->
+                       <div class="row">
+                           <div class="col result-flight-details">
+                               <div class="row">
+                                   <div class="col-xxl-7 col-xl-12 col-lg-12 col-md-12 result-item-airport">
+                                       <div class="result-first-airport"><span>DEL</span><p>10:45, 3 NOV</p></div>
+                                       <div class="depart-line-airport-item-flight"></div>
+                                       <div class="result-second-airport"><span>BOM</span><p>12:55, 3 NOV</p></div>
+                                   </div>
+                                   <div class="col-xxl-5 col-xl-12 col-lg-12 col-md-12 result-flight-details-airport">
+                                       <img src="images/flight_icon2.png">ir India, AI-865
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl-7 col-xl-12 col-lg-12 col-md-12 result-item-airport airport-settings">
+                                       <div class="result-first-airport"><p>Delhi Indira Gandhi Intl, New Delhi (DEL)</br> Terminal: 3</p></div>
+                                       <div class="result-second-airport"><p>Dubai Intl Arpt, Dubai (DXB)</br> Terminal: 1</p></div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="row">
+                           <div class="col result-flight-details layover-time">
+                               <img src="images/menu_booking.png">
+                               Layover time on Amritsar airport - 3h 15m
+                           </div>
+                       </div>
+                       <div class="row">
+                           <div class="col result-flight-details">
+                               <div class="row">
+                                   <div class="col-xxl-7 col-xl-12 col-lg-12 col-md-12 result-item-airport">
+                                       <div class="result-first-airport"><span>DEL</span><p>10:45, 3 NOV</p></div>
+                                       <div class="depart-line-airport-item-flight"></div>
+                                       <div class="result-second-airport"><span>BOM</span><p>12:55, 3 NOV</p></div>
+                                   </div>
+                                   <div class="col-xxl-5 col-xl-12 col-lg-12 col-md-12 result-flight-details-airport">
+                                       <img src="images/flight_icon2.png">ir India, AI-865
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-xxl-7 col-xl-12 col-lg-12 col-md-12 result-item-airport airport-settings">
+                                       <div class="result-first-airport"><p>Delhi Indira Gandhi Intl, New Delhi (DEL)</br> Terminal: 3</p></div>
+                                       <div class="result-second-airport"><p>Dubai Intl Arpt, Dubai (DXB)</br> Terminal: 1</p></div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="col-xxl col-xl col-lg col-md-2 hidden-for-desktop"><img src="images/yellow-plane.png"></div>
+               </div>
+               <!--Block-Advert-->
+               <div class="row justify-content-end result-row">
+                   <div class="col-xxl-10 col-xl-10 col-lg-10 col-md-12 result-link">
+                       <a href="#">Show 30 more options</a>
+                   </div>
+               </div>
+           </div>
+       </div>
+    </div>
+</div>
+
+<!--Footer-->
+<div class="container footer">
+    <div class="row justify-content-end bottom-menu">
+        <div class="col-xxl-9 col-xl-9 col-lg-12 col-md-12">
+            <div class="row">
+                <div class="col-xxl-8 xol-xl-8 col-lg-12 col-md-12">
+                    <ul>
+                        <li><a href="#">Home |</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">About Us |</a></li>
+                        <li><a href="#">Booking Guidelines |</a></li>
+                        <li><a href="#">Payment |</a></li>
+                        <li><a href="#">Flight Changes |</a></li>
+                        <li><a href="#">Terms of Services |</a></li>
+                        <li><a href="#">Travel Advisory |</a></li>
+                        <li><a href="#">Visa |</a></li>
+                        <li><a href="#">FAQ |</a></li>
+                        <li><a href="#">Affiliations |</a></li>
+                        <li><a href="#">Privacy Policy |</a></li>
+                        <li><a href="#">Great Deals |</a></li>
+                        <li><a href="#">Activities</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row after-bottom-menu">
+        <div class="col-xxl xol-xl col-lg-6 col-md-6 result-copyright">CheapTicket.in, 2017</div>
+        <div class="col-xxl xol-xl col-lg-6 col-md-6 result-made-with">Made with lodoss tea</div>
+    </div>
+</div>
+
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="js/intlTelInput.min.js"></script>
+<script src="js/moment-with-locales.min.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap-select.min.js"></script>
+<script src="js/i18n/defaults-en_US.js"></script>
+<script src="js/bootstrap-datetimepicker.min.js"></script>
+<script src="js/slick.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
